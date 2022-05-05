@@ -24,11 +24,16 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function login(LoginRequest $request){
-        if (! $token = auth()->attempt()) {
+    public function login(Request $request){
+        $data = [
+            'email' => $request->email,
+            'password' => $request->password,
+        ];
+        if (! $token = auth()->attempt($data)) {
             return response()->json(['error' => 'Email / Password is Incorrect'], 401);
         }
         return $this->createNewToken($token);
+
     }
 
     /**
