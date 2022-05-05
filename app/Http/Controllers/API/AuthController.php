@@ -106,6 +106,7 @@ class AuthController extends Controller
         $user->age = $request->age;
         $user->gender = $request->gender;
         $user->save();
+        $user->assignRole('Normal User');
         return $user;
     }
 }
