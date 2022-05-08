@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\TodoController;
+use App\Http\Controllers\API\DashboardController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -31,3 +32,5 @@ Route::group([ 'middleware' => 'api', 'prefix' => 'todos'], function ($router) {
     Route::get('/{id}/delete', [TodoController::class, 'delete']);
     Route::get('/{id}/show', [TodoController::class, 'show']);
 });
+
+Route::get('dashboard',[DashboardController::class, 'index']);
