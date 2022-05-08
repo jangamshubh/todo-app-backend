@@ -76,11 +76,18 @@ class TodoController extends Controller
     }
 
     protected function successMessage($data) {
-        return response()->json([
-            'data' => $data['data'],
-            'message' => $data['message'],
-            'status' => $data['status'],
-        ]);
+        if(array_key_exists('data', $data)) {
+            return response()->json([
+                'data' => $data['data'],
+                'message' => $data['message'],
+                'status' => $data['status'],
+            ]);
+        } else {
+            return response()->json([
+                'message' => $data['message'],
+                'status' => $data['status'],
+            ]);
+        }
     }
 
     protected function errorMessage($data) {
